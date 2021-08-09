@@ -1,11 +1,13 @@
 package com.customer.controller;
 
 import com.customer.connector.AccountDto;
+import com.customer.connector.CardDto;
 import com.customer.domain.Customer;
 import com.customer.domain.CustomerDto;
 import com.customer.domain.GetCustomerResponse;
 import com.customer.connector.response.GetCustomerProductsResponse;
 import com.customer.mapper.CustomerMapper;
+import com.customer.service.CardService;
 import com.customer.service.CustomerService;
 import com.customer.service.ProductService;
 import lombok.AllArgsConstructor;
@@ -27,6 +29,7 @@ import java.util.Optional;
 public class CustomerController {
     private CustomerService customerService;
     private ProductService productService;
+    private CardService cardService;
     private CustomerMapper mapper;
 
     @GetMapping("/{idCustomer}")
@@ -45,11 +48,13 @@ public class CustomerController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST)));
 
         List<AccountDto> customerAccounts = productService.findCustomerAccounts(customerId);
+        List<CardDto> customerCards = cardService.findCustomerCards(customerId);
 
         return GetCustomerProductsResponse.builder()
                 .customerId(customerDto.getId())
                 .fullName(customerDto.getFirstname() + " " + customerDto.getLastname())
                 .accounts(customerAccounts)
+                .cards(customerCards)
                 .build();
     }
 }
