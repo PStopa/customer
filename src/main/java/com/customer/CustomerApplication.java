@@ -26,11 +26,11 @@ public class CustomerApplication {
 		SpringApplication.run(CustomerApplication.class, args);
 	}
 
-	@Bean
-	InitializingBean sendDatabase() {
-		return () -> {
-			repository.save(new Customer(1L, "Jan", "Kowalski"));
-		};
-	}
+//	@Bean
+//	InitializingBean sendDatabase() {
+//		return () -> {
+//			repository.save(new Customer(1L, "Jan", "Kowalski"));
+//		};
+//	}
 
 }
