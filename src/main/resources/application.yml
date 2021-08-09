@@ -22,3 +22,6 @@ management:
         include: '*'
 eureka:
   client: ${eureka-client}
+feign:
+  hystrix:
+    enabled: true
