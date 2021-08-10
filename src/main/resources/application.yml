@@ -4,7 +4,7 @@ spring:
   profiles:
     active: production
   datasource:
-    url: jdbc:mysql://localhost:3306/kodilla_customer?serverTimezone=Europe/Warsaw&useSSL=False
+    url: jdbc:mysql://localhost:3306/kodilla_customer?serverTimezone=Europe/Warsaw&useSSL=False&allowPublicKeyRetrieval=true&useSSL=false
     username: ${customer.datasource.username}
     password: ${customer.datasource.password}
 # ACTUATOR INFO
@@ -27,11 +27,11 @@ eureka:
 #    eureka:
 #      enabled: false
 #    listOfServers: localhost:9999,localhost:9998
-cards:
-  ribbon:
-    eureka:
-      enabled: false
-    listOfServers: localhost:9997
+#cards:
+#  ribbon:
+#    eureka:
+#      enabled: false
+#    listOfServers: localhost:9997
 feign:
   hystrix:
     enabled: false
